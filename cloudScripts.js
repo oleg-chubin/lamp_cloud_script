@@ -10,7 +10,7 @@ handlers.getRivalLamps = function (args, context) {
     var rivals = leaderboardData.Leaderboard
             .filter(function(item){return item.PlayFabId != authData.PlayFabId})
     rivals = rivals.map(
-        fumction(item){
+        function(item){
             var playerData = server.GetUserData(
 	        {"Keys": ["DEFENCELAMPS"], "PlayFabId": item.PlayFabId});
 	    return playerData.data["DEFENCELAMPS"]	
