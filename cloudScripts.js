@@ -1,4 +1,8 @@
 // CloudScript (JavaScript)
+function randomChoice(arr) {
+    return arr[Math.floor(arr.length * Math.random())];
+}
+
 handlers.getRivalLamps = function (args, context) {
     var currentState; // here we are calculating the current player's game state
     var request = {
@@ -20,7 +24,7 @@ handlers.getRivalLamps = function (args, context) {
 	}    
     );
     rivals = rivals.filter(function(item){return item});	
-    return rivals;
+    return randomChoice(rivals);
 }
 
 handlers.initLeaderboard = function (args, context) {
