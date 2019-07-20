@@ -13,7 +13,10 @@ handlers.getRivalLamps = function (args, context) {
         function(item){
             var playerData = server.GetUserData(
 	        {"Keys": ["DEFENCELAMPS"], "PlayFabId": item.PlayFabId});
-	    return playerData;	
+	    if ('DEFENCELAMPS' in playerData.Data){
+                return playerData.Data['DEFENCELAMPS'];
+	    }
+	    return null;	
 	}    
     );
     rivals = rivals.filter(function(item){return item});	
