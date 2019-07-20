@@ -2,7 +2,8 @@
 handlers.helloWorld = function (args, context) {
     var currentState; // here we are calculating the current player's game state
     var request = {
-      "StatisticName": "Turns",
+      "StatisticName": "Turns", 
+      "PlayFabId" : currentPlayerId,
       "MaxResultsCount": 20
     }
     var leaderboardData = server.GetLeaderboardAroundUser(request);
