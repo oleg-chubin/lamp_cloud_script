@@ -16,3 +16,17 @@ handlers.helloWorld = function (args, context) {
     log.debug("helloWorld:", { input: inputValue });
     return leaderboardData;
 }
+
+handlers.initLeaderboard = function (args, context) {
+    request = {
+        "PlayFabId": currentPlayerId,
+        "Statistics": [
+            {
+              "StatisticName": "Turns",
+              "Value": 600
+            }
+        ]
+    };
+    server.UpdatePlayerStatistics(request);
+}
+
