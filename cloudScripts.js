@@ -1,5 +1,5 @@
 // CloudScript (JavaScript)
-handlers.helloWorld = function (args, context) {
+handlers.getRivalLamps = function (args, context) {
     var currentState; // here we are calculating the current player's game state
     var request = {
       "StatisticName": "Turns", 
@@ -7,14 +7,17 @@ handlers.helloWorld = function (args, context) {
       "MaxResultsCount": 20
     }
     var leaderboardData = server.GetLeaderboardAroundUser(request);
-	
-    var message = "Hello " + currentPlayerId + "!";
-    log.info(message);
-    var inputValue = null;
-    if (args && args.hasOwnProperty("inputValue"))
-        inputValue = args.inputValue;
-    log.debug("helloWorld:", { input: inputValue });
-    return leaderboardData;
+    var rivals = leaderboardData.Leaderboard
+            .filter(function(item){return item.PlayFabId != authData.PlayFabId})
+    rivals = rivals.map(
+        fumction(item){
+            var playerData = server.GetUserData(
+	        {"Keys": ["DEFENCELAMPS"], "PlayFabId": item.PlayFabId});
+	    return playerData.data["DEFENCELAMPS"]	
+	}    
+    );
+    rivals = rivals.filter(function(item){return item});	
+    return rivals;
 }
 
 handlers.initLeaderboard = function (args, context) {
