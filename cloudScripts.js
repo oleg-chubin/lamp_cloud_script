@@ -8,7 +8,7 @@ handlers.getRivalLamps = function (args, context) {
     }
     var leaderboardData = server.GetLeaderboardAroundUser(request);
     var rivals = leaderboardData.Leaderboard
-            .filter(function(item){return item.PlayFabId != authData.PlayFabId})
+            .filter(function(item){return item.PlayFabId != currentPlayerId})
     rivals = rivals.map(
         function(item){
             var playerData = server.GetUserData(
