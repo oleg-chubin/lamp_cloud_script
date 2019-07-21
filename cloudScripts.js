@@ -28,7 +28,7 @@ handlers.getRivalLamps = function (args, context) {
     rivals = rivals.filter(function(item){return item});	
     var result = randomChoice(rivals);
     var profile = server.GetPlayerProfile({PlayFabId: result.PlayFabId});
-    return {"DisplayName": profile["PlayerDisplayName"],
+    return {"DisplayName": profile["PlayerProfile"]["DisplayName"],
 	    "PlayFabId": result.PlayFabId,
 	    "Lamps": result.Lamps};
 }
