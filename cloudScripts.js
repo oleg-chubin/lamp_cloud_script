@@ -8,7 +8,7 @@ handlers.getRivalLamps = function (args, context) {
     var request = {
       "StatisticName": "Turns", 
       "PlayFabId" : currentPlayerId,
-      "MaxResultsCount": 20
+      "MaxResultsCount": 10
     }
     var leaderboardData = server.GetLeaderboardAroundUser(request);
     var rivals = leaderboardData.Leaderboard
