@@ -19,7 +19,8 @@ handlers.getRivalLamps = function (args, context) {
 	        {"Keys": ["DEFENCELAMPS"], "PlayFabId": item.PlayFabId});
 	    if ('DEFENCELAMPS' in playerData.Data){
                 return {"PlayFabId": item.PlayFabId,
-			"Lamps": playerData.Data['DEFENCELAMPS']};
+			"Lamps": playerData.Data['DEFENCELAMPS'],
+		        "DisplayName": ""};
 	    }
 	    return null;	
 	}    
