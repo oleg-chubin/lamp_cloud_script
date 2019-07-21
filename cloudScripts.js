@@ -18,7 +18,8 @@ handlers.getRivalLamps = function (args, context) {
             var playerData = server.GetUserData(
 	        {"Keys": ["DEFENCELAMPS"], "PlayFabId": item.PlayFabId});
 	    if ('DEFENCELAMPS' in playerData.Data){
-                return playerData.Data['DEFENCELAMPS'];
+                return {"PlayFabId": item.PlayFabId,
+			"Lamps": playerData.Data['DEFENCELAMPS']};
 	    }
 	    return null;	
 	}    
